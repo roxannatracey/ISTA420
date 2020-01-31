@@ -1,0 +1,166 @@
+Roxanna Barahona 
+
+Readings
+Read Chapter 1 T-SQL Query Fundamentals.
+Homework Questions
+SQL = structured query language 
+1.	How does the book describe the difference between imperative and declarative languages?
+
+-The book distinguishes imperative and declarative by defining declarative languages as those that require you to specify what you want to get. This is opposed to imperative languages which focuses on the how. For example you would define how the language is going to process the data.  SQL, or structured query language requires that you specify the what so that the relational database management system can figure out what mechanics are required to process the request/output. The RDBMS is based on set theory and predicate logic. 
+
+
+2.	List three categories of command statements in SQL
+-First category: Data Definition Language (DDL)
+object definitions and statements to include: CREATE, ALTER, DROP 
+
+-Second category: Data Manipulation Language (DML)
+Query and modify. Statements: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, MERGE 
+
+-Third category: Data Control Language (DCL)
+Permissions. Statements: GRANT, REVOKE
+
+
+3.	Give an informal definition of database as used in the expression \relational database management system." Give an informal definition of database as used in the expression \Human Resources database."
+
+-Database respective to RDMS: a form of structured storage using rows and columns 
+-Database respective to Human Resources Database: A large container or space that holds a collection of data pertinent to Human Resources. 
+
+4.	How does SQL implement three-valued predicate logic?
+-SQL implements three-valued predicate logic but referencing three logical values – true, false, and unknown. A three-valued predicate logic would be used where a statement would yield unknown by using a special marker. 
+null = does not exist 
+
+5.	How does SQL enforce entity integrity? What is entity integrity?
+-SQL uses constraints, or rules to enforce integrity. A certain type of constraint called a candidate key works to enforce entity integrity by preventing more than one occurrence of the same row (tuple) in a relation(table). It also works by distinguishing a primary key as opposed to alternate keys.
+-Relational databases are grounded in applied mathematics. 
+-A set there cannot be two of the same things. a set is distinct and unique, it does not repeat integers/objects
+  
+6.	How does SQL enforce referential integrity? What is referential integrity?
+-Referential integrity is enforced using a constraint called a foreign key. Foreign keys refers to one or more attributes of a relation (referencing relation) and references a candidate in either the same or different relation. Referential integrity is used to ensure consistency and accuracy between the data 
+
+7.	What is a relation as defined in the textbook? A one word answer to this question is sufficient.
+-table
+
+8. Is this table in first normal form? Why or why not? If it is not, how would you change it?
+create table faculty (
+	facID int primary key,
+	facName text,
+	facCreds text);
+facID || facName 	  || facCreds
+1     || Alan Alda        ||  BA, MA
+2     || Bridgette Bardot ||  BS, MS, PhD
+3     || Casey Cason      || AA, BBA, MBA, DEd
+
+-The table is NOT in 1NF (first normal form) because of the last column (facCreds)  and the attributes in the last column are not atomic. Atomic means individuals and there multiple entities in facCreds. The way you fix this is by making three tables. Each row of combinations must be unique 
+
+first table: Faculty 
+
+FID || FName || LName 
+
+1   || AMY   || ACURA
+2   || BOB   || BILL 
+3   || CAROL || CATH
+
+second table: Credential 
+
+CredID ||  CredName 
+
+1      || B.S.
+2      || M.S. 
+3      || PHD
+
+third table: 
+
+Faculty Creds
+
+FAC ID || CredID 
+
+1      ||        1
+2      ||        1
+3      ||        2
+Query 
+
+9. Is this table in second normal form? Why or why not? If it is not, how would you change it?
+create table pets (
+ownerID int primary key,
+petID int primary key,
+ownerFirstName text,
+ownerLastName text,
+petName text,
+petType text);
+OwnerID int Foreign key,
+
+ownerID || petID || ownerFirstName ||  ownerLastName  || petName ||   petType
+1       ||  1	 || Dom 	   ||	Delouise      || Rex     ||  German  Shepherd
+1 	||  2    || Dom 	   ||	Delouise      || Lacy    ||  Border   Collie
+2 	||  3    || Emilio 	   ||	Estevez       ||Midnight ||  Persian Cat
+
+
+
+Owner 
+
+ID || FName  || LName 
+1  || Dom    || DeLouise 
+2  || Emilio || Estevez 
+
+Pet 
+
+PetID || PetName || petType || OwnerID (FK)
+1     || Rex     || G.S     ||  1
+2     || Lacy    || B.C     ||  1
+3     || Midnight|| P.C     ||  2
+
+
+---- 3rd optional table 
+OwnerID || PetID 
+1           1 
+1           2
+3           2
+
+
+
+-I do not believe that this table is in 2NF because there are nonkey attributes that depend on only part of a candidate key. For example, the PetID and OwnerID are the primary keys. Primary key is to enforce entity integrity 
+
+- 2NF means that you have to use both primary keys
+-2NF means you can identify data without using all the primary keys 
+- every non-key column depends on the entire primary key 
+-if you can only identify PART of the info with the primary key it is not in 2NF 
+
+
+10. Is this table in third normal form? Why or why not? If it is not, how would you change it?
+create table friends (
+friendID int primary key,
+friendName text,
+friendStreet text,
+friendCity text,
+friendState text,
+friendZip text);
+
+ID || FirstName  || LastName  ||Street              || City      || State  || Zip
+1  ||Fred        ||Flintstone ||123 Rock Quarry Rd  || Bedrock   ||GA      ||31905
+2  ||Greta       ||Garbo      ||456 Starlit Ave     ||Paris      ||FL      ||30019
+3  ||Harry       ||Houdini    ||789 Hidden Glen Lane||Alcatraz   ||CA      || 00000
+
+-No I believe that this table is not in 3NF because the city and state depend on the zip code. In order to put it in 3NF you need another table with just the city state and zip code where the zip code is the primary key. 
+The first table would be ID *PK, FNAME, LNAME, 
+Second table would be the Zip Code*PK, city, and state. If you move the zip code depends on the city and state 
+
+
+in 3NF you need the friendID (primary key) to find the full name and address.  The Name, street, city, state, and zip code all depend on the friendID. Addtionally each combination/set is unique. Each cell is atomic 
+
+11. List the components of a four-part object name.
+-Server name, database name, schema (namespace) name and object name 
+
+12. What is the difference between declarative data integrity and procedural data integrity?
+-Procedural data integrity is enforced with code while declarative data integrity is enforced as part of the model through table definitions. 
+
+Homework Exercises
+1. Install SQL Server Express on a personal computer. See the appendix of the book, Getting Started, if
+you run into problems. Please, please check the system requirements before you do this. You cannot
+install SQL Server on a hand held device or an internet appliance. This may take a couple of hours
+but you can read the text book while you are waiting.
+2. Install SQL Server Management Studio on a personal computer. See the cautions above. This may
+take a long time as well.
+3. We will be downloading and installing the database the text uses. Read the Introduction. This can be
+obtained from http://aka.ms/T-SQLFund3e/downloads.
+Notes
+SQL = structured query language

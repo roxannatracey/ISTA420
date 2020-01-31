@@ -1,0 +1,58 @@
+
+#### T-SQl CHP 2a Homework Questions
+##### Roxanna Barahona
+
+
+Roxanna Barahona
+CHP 2
+HW 2A
+
+
+1. List the order of execution of a SQL query.
+
+ 1. FROM
+ 2. WHERE
+ 3. GROUP BY
+ 4. HAVING
+ 5. SELECT
+ 6. ORDER BY
+* Even though the SELECT clause appears first in the query, it is logically last. You start by identifying the object you want queried and then the location.
+
+2. What does the from clause do?
+-Pulls from virtual tables as well
+- The from clause is where you specify the names of the tables that you want to query along with table operators that operate on those tables. In simpler terms it is where you specify the name of the table you want to query.
+
+3. What does the where clause do?
+-It will look at each row and compare it to the predicate that you specify
+-Predicate is an expression that returns true or false 
+- The where clause is where you use a specific predicate or logical expression to filter the rows that the FROM clause returned. If the logical expression or predicate is TRUE, it will return a result.
+
+4. What does the group by clause do?
+- The group by clause is based on the elements specified resulting in a group that organizes the rows. It can organize the information from multiple tables when querying information.
+
+5. What does the having clause do?
+- The having clause filters and organizes the groups that were previously created by the group y clause. It returns values that are TRUE.
+
+6. What does the select clause do?
+- The select clause is where you identify the columns you want returned in the result table of the query. In other words, it is identifying which data (columns) to pull from.
+
+7. What does the distinct keyword do?
+- It handles distinct occurrences of known values. This means that it retrieves unique (Different) values and removes duplicate records.
+
+8. What does the order by clause do?
+- It sorts the rows that are output. For example it can sort a row by ID, Name, or year.
+
+9. What does the limit clause do? This is not in the book.
+- The limit clause sets a maximum number of tuples (row values)/records than can be returned. However not all SQL versions support this.
+
+10. What does the top clause do?
+- The top clause allows you to specify how many tuples/records you want returned.
+
+11. What do the offset . . . fetch . . . clauses do?
+- These are considered an extension of the order by clause. OFFSET clause is where you can indicate how many rows to skip and FETCH is where you specify how many rows to filter after the skipped one.
+
+Review the documentation and tutorials on the following web sites.
+Microsoft documentation, https://docs.microsoft.com/en-us/sql/t-sql/queries/queries
+General SQL documentation, https://sqlite.org/syntaxdiagrams.html
+SQL tutorial, https://www.w3schools.com/sql/default.asp
+SQL tutorial, https://www.tutorialspoint.com/t_sql/index.htm

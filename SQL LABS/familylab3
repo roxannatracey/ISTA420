@@ -1,0 +1,41 @@
+.headers on
+
+-- Name: family.sql
+-- Author: Charles Carter
+-- Date: August 1, 2018
+-- Purpose: introduction to building a database and running queries
+
+drop table if exists family;
+
+create table family (
+    id integer,
+    name text,
+    sex integer,
+    role text
+);
+
+insert into family values (1, 'Charles', 1, 'parent');
+insert into family values (2, 'Bonnie', 0, 'parent');
+insert into family values (3, 'Casie', 0, 'child');
+insert into family values (4, 'Jackson', 1, 'child');
+
+
+.print ''
+
+select * from family;
+id|name|sex|role
+1|Charles|1|parent
+2|Bonnie|0|parent
+3|Casie|0|child
+4|Jackson|1|child
+select name, role from family where sex = 1;
+name|role
+Charles|parent
+Jackson|child
+select id, sex from family where role like 'pet';
+select * from family where sex = 0;
+id|name|sex|role
+2|Bonnie|0|parent
+3|Casie|0|child
+
+.exit

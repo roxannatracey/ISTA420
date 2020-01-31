@@ -1,0 +1,53 @@
+### Roxanna Barahona
+#### T-SQL HW2b
+
+1. What is a data type? Why do we have data types?
+- regular data types include CHAR and VARCHAR.
+-unicode data types include NCHAR and NVARCHAR. This requires 2 bytes per character.
+2. What is a collation? Name four elements of a collation.
+- a property of character data that encapsulates several aspects
+-four elements:
+-language support,
+-sort order,
+-case sensitivity
+-accent sensitivity
+
+3. How would you strip whitespace from a string? For example, suppose you had “ Dave ” but
+wanted only “Dave”.
+- -You can use the RTRIM and LTRIM function to remove leading and/or trailing spaces. You can delimit identifiers by using double quotes or closed brackets. ; Example:  SELECT RTRIM(LTRIM ‘       Dave          ‘  ));
+
+4. Suppose you wanted to make a list of every college and university that was called an Institute from the college table. Write the query.
+- select Institute from college, university;
+
+5. How would you find the number of the index of the first space in a string? For example, the index of the first space in “Barack Hussein Obama” would be 7.
+-select CHARINDEX (' ','Barack Hussein Obama');
+
+6. How would you select just the first name in a list of the presidents. Each record looks like the: ”George Washington”, ”John Adams”, ”Thomas Jefferson”. First names can be an arbitrary length, from “Cal” to “Benjamin.” (e.g., Cal College, Benjamin Harrison)
+- select presidents where first , (name,charindex('',name)) from presidents
+
+7. What is the order of precedence for the logical operators?
+- 1. () parenthesis
+- 2. * (multiplications), / (division), % (modulo)
+- 3. + (positive), -negative, +(additions),+ (concatenation), - (subtraction)
+- 4. =, <, <, >, =, <>, !=, !>, !< (Comparison operators)
+- 5. not
+- 6. and
+- 7. between, in, like, or
+- 8. = (assignment)
+
+8. What is the order of precedence for the math operators?
+- 1. () parenthesis
+- 2. * (multiplications)
+- 3. / (Division )
+- 4. + additions
+- 5. subtraction
+
+9. What is the difference between a simple and a searched CASE expression?;
+-The simple form is used to compare one value or scalar expression with a list of possible values and return a value for the first match.
+-if nothing is found it returns ELSE NULL
+-the searched case evaluates multiple Boolean expressions and executes the sequence of statements associated with the first condition that evaluates to true.
+
+10. How would you turn a list of names like this: “LASTNAME, FIRSTNAME”, to a list like this: “FIRSTNAME LASTNAME”?
+-SELECT ('1-firstname, 2-lastname()
+
+11. How would you turn a list of names like this: “FIRSTNAME LASTNAME”, to a list like this: “LASTNAME, FIRSTNAME”?
